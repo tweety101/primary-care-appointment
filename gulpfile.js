@@ -144,7 +144,8 @@ gulp.task('build', function() {
 gulp.task('html', function() {
     console.log('reloading html');
     return gulp.src('public/*.html')
-    .pipe(livereload());
+        .pipe(gulp.dest('./public/dist'))
+        .pipe(livereload());
     
 
 })

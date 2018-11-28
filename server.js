@@ -2,7 +2,7 @@ var StaticServer = require('static-server');
 
 
 var server = new StaticServer({
-    rootPath: './public/',
+    rootPath: './public/dist/',
     port: 3000
 });
 
