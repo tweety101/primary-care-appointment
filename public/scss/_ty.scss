@@ -1,0 +1,300 @@
+
+
+
+.ty-body {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+
+}
+
+.ty-container   {
+    flex: 0 1 1366px;
+    
+    display: flex;
+    flex-direction: column;
+     /* for Firefox */
+     min-height: 0;
+}
+
+.ty-header {
+    flex: 0 0 112px;
+    display: flex;
+    justify-content: center;
+    @media (max-width: $breakpoint-small) {
+        flex: 0 0 50px;
+    }
+
+    &__inner    {
+
+        flex: 0 1 1200px;
+        display: flex;
+        align-items: center;
+        padding: 0 35px;
+    }
+
+    &__left {
+        flex: 1;
+    }
+
+    &__logo-img {
+        @media (max-width: $breakpoint-small) {
+            height: 30px;
+        }
+    }
+
+    &__right {
+        flex: 0 1 750px;
+        @media (max-width: 900px) {
+            display: none;
+        }
+
+    }
+
+}
+
+.ty-section {
+    flex: 1;
+    background: url("/dist/images/primary-care-appt-ty-1.jpg");
+    
+    background-size: cover;
+    background-position: 50% 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__inner {
+        height: 80%;
+        flex: 0 1 1200px;
+        display: flex;
+        align-items: flex-start;
+    }
+
+}
+
+
+
+
+
+.ty-nav {
+    
+
+    &__items {
+        
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 0;
+
+    }
+
+
+    &__item {
+
+
+        
+
+    }
+
+    &__item-link {
+        font-size: 16px;
+        font-weight: 600;
+        color: #37505B;
+        text-decoration: none;
+        white-space: nowrap;
+        
+        
+    }
+}
+
+
+
+.ty-content {
+    flex: 0 1 520px;
+    margin: 0 35px;
+    background: rgba(15, 63, 85, .55);
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    padding: 34px;
+    color: #ffffff;
+    &__text {
+
+        margin-bottom: 0;
+            &:not(:last-child) {
+                margin-bottom: 0.5rem;
+            }
+
+            
+            
+       
+
+    }
+
+    @media (max-width: $breakpoint-medium) {
+        align-self: flex-end;
+    }
+
+    @media (max-width: $breakpoint-small) {
+        margin: 0 20px;
+    }
+}
+
+.ty-footer {
+    height: 50px;
+    background: $color-blue;
+}
+
+
+
+.mobile-nav {
+    display: none;
+    @media (max-width: 900px) {
+        display: block;
+    }
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__button {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        position: absolute;
+        top: 25px;
+        right: 15px;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-width: $breakpoint-small) {
+            top: 2px;
+        }
+
+    }
+
+    &__icon {
+
+        position: relative;
+        &,
+        &::before,
+        &::after {
+            width: 30px;
+            height: 2px;
+            background-color: $color-blue;
+            display: inline-block;
+            transition: all .4s;
+
+        }
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+        }
+        &::before {
+            top: -10px;
+        }
+        &::after {
+            top: 10px;
+        }
+    }
+
+    &__background {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        background-image: radial-gradient($color-blue , $color-teal );
+        z-index: 50;
+        transition: all .5s cubic-bezier(.86,.01,.12,1.01);
+
+    //    transform: scale(100);
+    }
+    
+
+    &__nav {
+        height: 100vh;
+        width: 0;
+        opacity: 0;
+        position: fixed;
+        top: 50px;
+        right: 0;
+        z-index: 70;
+        transition: opacity .5s cubic-bezier(1,0,.28,1);
+    }
+
+
+
+    &__items {
+        
+        list-style: none;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+
+
+    &__item {
+
+
+        &:not(:last-child) {
+            margin-bottom: 25px;
+        }
+
+    }
+
+    &__item-link {
+        font-size: 20px;
+        font-weight: 600;
+        color: #ffffff;
+        text-decoration: none;
+        
+        
+    }
+
+    &__checkbox:checked ~ &__background {
+        transform: scale(150);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        
+        width: 100%;
+        opacity: 1;
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent;
+    }
+
+    &__checkbox:checked + &__button &__icon::before {
+        top: 0;
+        transform: rotate(135deg);
+
+    }
+
+    &__checkbox:checked + &__button &__icon::after {
+        top: 0;
+        transform: rotate(-135deg);
+    }
+
+
+
+    
+
+    
+
+}

@@ -1,0 +1,1 @@
+var i,completelinks=document.querySelectorAll(".content__complete-link");for(i=0;i<completelinks.length;i++)completelinks[i].addEventListener("click",focusField);function focusField(){document.querySelector("#firstname").focus({preventScroll:!0}),document.querySelector("#formtop").scrollIntoView({behavior:"smooth",block:"start"})}
