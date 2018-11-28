@@ -113,6 +113,34 @@ gulp.task('export', function() {
         .pipe(gulp.dest('./'));
 })
 
+gulp.task('build', function() {
+    gulp.src('public/*.html')
+        .pipe(gulp.dest('./public/dist'));
+       
+    gulp.src(SCRIPTS_PATH)
+        .pipe(uglify())
+        .pipe(gulp.dest(DIST_PATH))
+        .pipe(gulp.dest('./public/dist'));
+    gulp.src('public/scss/styles.scss')
+        .pipe(plumber(function(err) {
+            console.log('Styles task error');
+            console.log(err);
+            this.emit('end');
+        }))
+        .pipe(sourcemaps.init())
+        .pipe(autoprefixer({
+            browsers: ['last 3 versions'],
+            cascade: false
+        }))
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(DIST_PATH))
+        
+    
+})
+
 gulp.task('html', function() {
     console.log('reloading html');
     return gulp.src('public/*.html')
